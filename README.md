@@ -1,24 +1,22 @@
-
 # BladeSlim
 
-Integração do Blade Template Engine com Slim Framework
+Integration of Blade Template Engine with Slim Framework
 
-![PHP Version](https://img.shields.io/badge/php-%3E=8.4-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
+[![Latest Stable Version](http://poser.pugx.org/caiquebispo/blade-slim/v)](https://packagist.org/packages/caiquebispo/blade-slim) [![Total Downloads](http://poser.pugx.org/caiquebispo/blade-slim/downloads)](https://packagist.org/packages/caiquebispo/blade-slim) [![Latest Unstable Version](http://poser.pugx.org/caiquebispo/blade-slim/v/unstable)](https://packagist.org/packages/caiquebispo/blade-slim) [![License](http://poser.pugx.org/caiquebispo/blade-slim/license)](https://packagist.org/packages/caiquebispo/blade-slim) [![PHP Version Require](http://poser.pugx.org/caiquebispo/blade-slim/require/php)](https://packagist.org/packages/caiquebispo/blade-slim)
 
-Um pacote que integra perfeitamente o mecanismo de templates Blade do Laravel com o Slim Framework, proporcionando uma experiência de desenvolvimento fluida com todos os recursos do Blade em aplicações Slim.
+A package that seamlessly integrates Laravel’s Blade templating engine with the Slim Framework, providing a smooth development experience with full Blade features in Slim applications.
 
-## 📦 Instalação
+## Installation
 
-Instale via Composer:
+Install via Composer:
 
 ```bash
 composer require caiquebispo/blade-slim
 ```
 
-## 🚀 Configuração Rápida
+## Quick Setup
 
-Configure o Blade no seu aplicativo Slim:
+Configure Blade in your Slim application:
 
 ```php
 use BladeSlim\Blade;
@@ -26,15 +24,15 @@ use Slim\Factory\AppFactory;
 
 $app = AppFactory::create();
 
-// Configuração do Blade
+// Blade Configuration
 $blade = new Blade(
-    __DIR__ . '/resources/views', // Diretório de views
-    __DIR__ . '/storage/cache',   // Diretório de cache
+    __DIR__ . '/../resources/views', // Views directory
+    __DIR__ . '/../storage/cache',   // Cache directory
     $app->getResponseFactory()->createResponse() // Response prototype
 );
 ```
 
-Crie sua primeira view em `resources/views/home.blade.php`:
+Create your first view in `resources/views/home.blade.php` and make sure the `storage/cache` folder is writable:
 
 ```blade
 <!DOCTYPE html>
@@ -43,51 +41,51 @@ Crie sua primeira view em `resources/views/home.blade.php`:
     <title>{{ $title }}</title>
 </head>
 <body>
-    <h1>Bem-vindo ao {{ $appName }}!</h1>
+    <h1>Welcome to {{ $appName }}!</h1>
 </body>
 </html>
 ```
 
-Use em uma rota:
+Use it in a route:
 
 ```php
 $app->get('/', function () {
     return view('home', [
-        'title' => 'Página Inicial',
-        'appName' => 'Meu App Slim'
+        'title' => 'Home Page',
+        'appName' => 'My Slim App'
     ]);
 });
 ```
 
-## ✨ Recursos Principais
+## Key Features
 
-### ✅ Função Global `view()`
+### Global `view()` Function
 
-Retorna automaticamente uma resposta PSR-7 pronta.
+Automatically returns a ready PSR-7 response.
 
-Suporte a dados, status code e headers:
+Supports data, status codes, and headers:
 
 ```php
-return view('error', ['message' => 'Não encontrado'], 404);
+return view('error', ['message' => 'Not Found'], 404);
 ```
 
-### ✅ Todos os Recursos do Blade
+### Full Blade Support
 
-- Herança de templates (`@extends`)
-- Seções (`@section`, `@yield`)
-- Componentes (`@component`)
-- Diretivas personalizáveis
-- Inclusão de sub-views (`@include`)
+- Template inheritance (`@extends`)
+- Sections (`@section`, `@yield`)
+- Components (`@component`)
+- Custom directives
+- Sub-view inclusion (`@include`)
 
-### ✅ Configuração Flexível
+### Flexible Configuration
 
-- Múltiplos caminhos de views
-- Cache opcional
-- Integração com container DI do Slim
+- Multiple view paths
+- Optional caching
+- Integration with Slim's DI container
 
-## 📚 Uso Avançado
+## Advanced Usage
 
-### 🔧 Diretivas Personalizadas
+### Custom Directives
 
 ```php
 $blade->getFactory()->directive('datetime', function ($expression) {
@@ -95,22 +93,22 @@ $blade->getFactory()->directive('datetime', function ($expression) {
 });
 ```
 
-## 🤝 Contribuição
+## Contributing
 
-Contribuições são bem-vindas! Siga estes passos:
+Contributions are welcome! Follow these steps:
 
-1. Faça um fork do projeto
-2. Crie sua branch (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create your branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-## 📧 Contato
+## 📧 Contact
 
 Caique Bispo - caiquebispodanet86@gmail.com
 
-Link do Projeto: [https://github.com/caiquebispo/blade-slim](https://github.com/caiquebispo/blade-slim)
+Project Link: [https://github.com/caiquebispo/blade-slim](https://github.com/caiquebispo/blade-slim)
